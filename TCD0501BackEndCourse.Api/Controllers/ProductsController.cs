@@ -5,6 +5,7 @@ using System.Linq;
 
 using TCD0501BackEndCourse.Api.Data;
 using TCD0501BackEndCourse.Api.Models;
+using TCD0501BackEndCourse.Api.Repositories.Interface;
 
 namespace TCD0501BackEndCourse.Api.Controllers
 {
@@ -13,9 +14,14 @@ namespace TCD0501BackEndCourse.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private ApplicationDbContext _context;
-        public ProductsController(ApplicationDbContext context)
+        private IProductRepository _productRepository;
+        public ProductsController(
+            ApplicationDbContext context,
+            IProductRepository productRepository
+            )
         {
             _context = context;
+            _productRepository = productRepository;
         }
         // Endpoint: /api/products
         [HttpGet("")]
