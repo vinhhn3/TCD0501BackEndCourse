@@ -75,12 +75,14 @@ namespace TCD0501BackEndCourse.UnitTests
             var products = _repository.GetProducts();
 
             // Assert
-            Assert.AreEqual(3, products.Count);
-            Assert.AreEqual("Phone Test 1", products[0].Name);
-            Assert.AreEqual(1, products[0].CategoryId);
-            Assert.AreEqual("Desc Test 1", products[0].Description);
-            Assert.AreEqual(10, products[0].Price);
-
+            Assert.That(products.Count, Is.EqualTo(3));
+            Assert.Multiple(() =>
+            {
+                Assert.That(products[0].Name, Is.EqualTo("Phone Test 1"));
+                Assert.That(products[0].CategoryId, Is.EqualTo(1));
+                Assert.That(products[0].Description, Is.EqualTo("Desc Test 1"));
+                Assert.That(products[0].Price, Is.EqualTo(10));
+            });
         }
     }
 }
