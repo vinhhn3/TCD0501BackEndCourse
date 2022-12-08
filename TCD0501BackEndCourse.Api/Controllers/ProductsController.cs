@@ -27,7 +27,7 @@ namespace TCD0501BackEndCourse.Api.Controllers
         [HttpGet("")]
         public IActionResult GetProducts()
         {
-            var products = _context.Products.ToList();
+            var products = _productRepository.GetProducts();
             return Ok(products);
         }
         // Endpoint: /api/products/5
